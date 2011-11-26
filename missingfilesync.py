@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 import sys
 import shutil
@@ -13,7 +15,7 @@ def usage():
 	print 'destfolder      Folder that you want to update with new files'
 	print ''
 	print 'ex:'
-	print '\tpython missingfilesync.py "c:\Music\PlayLists" "e:\Music\PlayLists"'
+	print '\tpython missingfilesync.py "c:\User\Me\Amazon MP3" "e:\Music\Amazon MP3"'
 
 def exit(folder):
 	print folder

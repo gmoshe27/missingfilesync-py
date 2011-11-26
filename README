@@ -1,0 +1,13 @@
+Missing File Sync
+Gad Berger, 11/26/2011
+
+A simple python script to update a folder with missing folders and files.
+
+Usage: python missingfilesync.py [sourcefolder] [destfolder]
+
+Only new files and folders are copied over.
+It was originally intended to keep Amazon MP3 purchases synced across a home
+server, SD card and other devices. However, it was general enough to be used
+for any other purpose.
+
+Enjoy!
