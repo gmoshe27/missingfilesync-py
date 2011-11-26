@@ -37,11 +37,8 @@ def main():
 		usage()
 		sys.exit()
 
-	print len(sys.argv)
 	src = os.path.normpath(sys.argv[1])
 	dst = os.path.normpath(sys.argv[2])
-	print src
-	print dst
 	
 	try:
 		# test that the source path exists
