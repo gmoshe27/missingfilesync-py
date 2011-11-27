@@ -69,7 +69,6 @@ def main():
 		
 	fileSet = set(fileList)
 
-	#for path, dirs, files in os.walk(src):	
 	for srcfolder, dirs, files in os.walk(src):
 		relpath = os.path.relpath(srcfolder, src)
 		dstfolder = os.path.join(dst, relpath)
