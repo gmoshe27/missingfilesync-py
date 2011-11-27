@@ -6,7 +6,7 @@ import shutil
 
 def usage():
 	print 'Missing File Sync (c) Gad Berger 2011\n'
-	print 'Usage: python foldersync.py [sourcefolder] [destfolder]'
+	print 'Usage: python missingfilesync.py [sourcefolder] [destfolder]'
 	print ''
 	print 'Missing File Sync is a script that only copies new files to a destination'
 	print 'folder. Files with the same name and path will not be copied.'
