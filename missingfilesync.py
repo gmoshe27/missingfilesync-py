@@ -17,10 +17,6 @@ def usage():
 	print 'ex:'
 	print '\tpython missingfilesync.py "c:\User\Me\Amazon MP3" "e:\Music\Amazon MP3"'
 
-def exit(folder):
-	print folder
-	sys.exit()
-
 def copyfile(filename, srcfolder, dstfolder):
 	# create the folder
 	if not os.path.exists(dstfolder):
@@ -29,7 +25,6 @@ def copyfile(filename, srcfolder, dstfolder):
 	srcfile = os.path.join(srcfolder, filename)
 	dstfile = os.path.join(dstfolder, filename)
 	
-	#print 'copying ' + srcfile + ' to ' + dstfile
 	shutil.copy2(srcfile, dstfile)
 
 def main():
@@ -37,26 +32,23 @@ def main():
 		usage()
 		sys.exit()
 
+	print 'Missing File Sync (c) Gad Berger 2011\n'
+	
 	src = os.path.normpath(sys.argv[1])
 	dst = os.path.normpath(sys.argv[2])
 	
 	try:
-		# test that the source path exists
+		# test that the source and destination paths exist
 		if not os.path.exists(src):
-			print 'Did you type in the source folder correctly?'
+			print 'Are you sure you typed the source folder in correctly?'
 			exit(src)
-	except (IOError, WindowsError), e:
-		print 'Error accessing the source or device:'
-		exit(src)
-	
-	try:
-		# test the destination path
 		if not os.path.exists(dst):
 			# try to create the directory
+			print 'Creating destination folder', dst
 			os.makedirs(dst)
 	except (IOError, WindowsError), e:
-		print 'Could not access or create the destination folder:'
-		exit(dst)
+		print 'Error accessing the source/destination folder or device'
+		sys.exit()
 	
 	fileList = []
 	
@@ -73,10 +65,15 @@ def main():
 		relpath = os.path.relpath(srcfolder, src)
 		dstfolder = os.path.join(dst, relpath)
 		
+		if len(files) > 0:
+			print 'syncing', relpath, '...'
+
 		for filename in files:
 			file = os.path.join( relpath, filename )
 			if file not in fileSet:
 				copyfile(filename, srcfolder, dstfolder)
-
+	
+	print 'all done!'
+	
 if __name__ == "__main__":
 	main()
